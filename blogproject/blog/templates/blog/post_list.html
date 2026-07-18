@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Barcha postlar{% endblock %}
+
+{% block content %}
+<h2>Barcha postlar</h2>
+
+<form method="get" class="filter-form">
+    <input type="text" name="q" placeholder="Qidirish..." value="{{ query }}">
+    <select name="category">
+        <option value="">Barcha bo'limlar</option>
+        {% for category in categories %}
+            <option value="{{ category.slug }}" {% if request.GET.category == category.slug %}selected{% endif %}>{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Filtrlash</button>
+</form>
+
+<div class="post-grid">
+    {% for post in posts %}
+        {% include 'blog/_post_card.html' %}
+    {% empty %}
+        <p>Postlar topilmadi.</p>
+    {% endfor %}
+</div>
+{% endblock %}

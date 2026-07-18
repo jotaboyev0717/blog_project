@@ -1,0 +1,62 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Bosh sahifa{% endblock %}
+
+{% block content %}
+
+{% if featured_posts %}
+<section class="block">
+    <h2>Tavsiya qilingan postlar</h2>
+    <div class="post-grid">
+        {% for post in featured_posts %}
+            {% include 'blog/_post_card.html' %}
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<section class="block">
+    <h2>Eng yangi postlar</h2>
+    <div class="post-grid">
+        {% for post in latest_posts %}
+            {% include 'blog/_post_card.html' %}
+        {% empty %}
+            <p>Hozircha postlar yo'q.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="block">
+    <h2>Eng ko'p ko'rilgan postlar</h2>
+    <div class="post-grid">
+        {% for post in most_viewed %}
+            {% include 'blog/_post_card.html' %}
+        {% empty %}
+            <p>Hozircha postlar yo'q.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="block">
+    <h2>Haftaning eng ommabop postlari</h2>
+    <div class="post-grid">
+        {% for post in weekly_popular %}
+            {% include 'blog/_post_card.html' %}
+        {% empty %}
+            <p>Bu hafta hali post yo'q.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="block">
+    <h2>Oyning eng ommabop postlari</h2>
+    <div class="post-grid">
+        {% for post in monthly_popular %}
+            {% include 'blog/_post_card.html' %}
+        {% empty %}
+            <p>Bu oy hali post yo'q.</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

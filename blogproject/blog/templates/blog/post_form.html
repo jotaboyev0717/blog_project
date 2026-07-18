@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Post qo'shish{% endblock %}
+
+{% block content %}
+<h2>Yangi post qo'shish</h2>
+<p class="hint">Post joylashtirilgandan so'ng, u admin tasdiqlagandan keyin bosh sahifada ko'rinadi.</p>
+
+<form method="post" enctype="multipart/form-data" class="post-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Joylashtirish</button>
+</form>
+{% endblock %}

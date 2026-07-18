@@ -1,0 +1,11 @@
+<div class="post-card">
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+    {% endif %}
+    <div class="post-card-body">
+        {% if post.category %}<span class="category-badge">{{ post.category.name }}</span>{% endif %}
+        <h3><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h3>
+        <p class="post-meta">{{ post.author.username }} &middot; {{ post.created_at|date:"d.m.Y" }} &middot; {{ post.views }} ko'rildi</p>
+        <p>{{ post.content|truncatewords:20 }}</p>
+    </div>
+</div>
